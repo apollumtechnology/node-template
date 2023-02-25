@@ -15,6 +15,11 @@
     "no-undef": "off",
     "no-console": "off",
     "import/extensions": "off",
-    "import/no-unresolved": "off"
+    "import/no-unresolved": "off",
+    "import/prefer-default-export": "off",
+    "no-useless-constructor": "off",
+    "no-unused-vars": "off",
+    "no-empty-function": "off",
+    "class-methods-use-this": "off"
   }
 }
