@@ -1,1 +1,13 @@
-console.log("Hello World");
+import Fastify from "fastify";
+import cors from "@fastify/cors";
+
+const app = Fastify();
+app.register(cors);
+
+app.listen({ port: 3000 }, (err, address) => {
+  if (err) {
+    console.error(err);
+    process.exit(1);
+  }
+  console.log(`Server listening at ${address}`);
+});

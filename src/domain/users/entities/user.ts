@@ -18,7 +18,7 @@ export class User {
 
   public readonly email: string;
 
-  private readonly password: string;
+  public readonly password: string;
 
   private constructor(data: UserData) {
     this.id = data.id || Buffer.from(`${data.name}:${data.email}`).toString("base64");
