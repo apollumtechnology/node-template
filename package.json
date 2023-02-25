@@ -5,7 +5,7 @@
   "repository": "git@github.com:apollumtechnology/node-template.git",
   "author": "Bruno Petrolini <brunopetrolini@hotmail.com>",
   "license": "GPL-3.0",
-  "private": false,
+  "private": true,
   "scripts": {
     "build": "tsup src",
     "start": "tsx src/server.ts",
@@ -16,10 +16,17 @@
   },
   "devDependencies": {
     "@types/node": "^18.14.1",
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
     "@vitest/coverage-c8": "^0.29.1",
+    "eslint": "^8.34.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
     "tsup": "^6.6.3",
     "tsx": "^3.12.3",
-    "typescript": "^4.9.5",
+    "typescript": ">=4.4",
     "vitest": "^0.29.1"
   },
   "engines": {
