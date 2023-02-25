@@ -21,7 +21,7 @@ describe("FindUserByIdUseCase Test Suite", () => {
   it("should be call FindUserByIdRepository with correct value", async () => {
     const findByIdSpy = vi.spyOn(findUserByIdRepository, "findById");
 
-    await sut.perform(usecaseInput);
+    await sut.execute(usecaseInput);
 
     expect(findByIdSpy).toHaveBeenCalledWith("any_user_id");
   });
@@ -29,19 +29,19 @@ describe("FindUserByIdUseCase Test Suite", () => {
   it("should be throw if FindUserByIdRepository throws", async () => {
     vi.spyOn(findUserByIdRepository, "findById").mockRejectedValueOnce(new Error("Find repository error"));
 
-    const promise = sut.perform(usecaseInput);
+    const promise = sut.execute(usecaseInput);
 
     await expect(promise).rejects.toThrow("Find repository error");
   });
 
   it("should be throw if FindUserByIdRepository returns null", async () => {
-    const promise = sut.perform("invalid_user_id");
+    const promise = sut.execute("invalid_user_id");
 
     await expect(promise).rejects.toThrow("User not found");
   });
 
   it("should be return a user on success", async () => {
-    const result = await sut.perform(usecaseInput);
+    const result = await sut.execute(usecaseInput);
 
     expect(result).toEqual({
       id: "any_user_id",

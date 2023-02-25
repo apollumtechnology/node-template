@@ -5,12 +5,6 @@ import { CreateUserUseCase } from "../../domain/users/usecases";
 import { makeCreateUserUseCase } from "../../infra/factories";
 
 export class CreateUserController {
-  private readonly createUserUseCase: CreateUserUseCase;
-
-  constructor() {
-    this.createUserUseCase = makeCreateUserUseCase();
-  }
-
   async run(request: FastifyRequest) {
     const createUserBody = z.object({
       name: z.string(),
@@ -19,7 +13,9 @@ export class CreateUserController {
     });
 
     const userData = createUserBody.parse(request.body);
-    const user = await this.createUserUseCase.perform(userData);
+
+    const createUserUseCase = makeCreateUserUseCase();
+    const user = await createUserUseCase.execute(userData);
     return user;
   }
 }

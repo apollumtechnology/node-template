@@ -31,7 +31,7 @@ describe("CreateUserUseCase Test Suite", () => {
   it("should be call HashService with correct values", async () => {
     const hashSpy = vi.spyOn(hashService, "hash");
 
-    await sut.perform(usecaseInput);
+    await sut.execute(usecaseInput);
 
     expect(hashSpy).toHaveBeenCalledWith("123456");
     expect(hashSpy).toHaveBeenCalledTimes(1);
@@ -39,7 +39,7 @@ describe("CreateUserUseCase Test Suite", () => {
 
   it("should be throw if HashService throws", async () => {
     vi.spyOn(hashService, "hash").mockRejectedValueOnce(new Error("Error in hash method"));
-    const promise = sut.perform(usecaseInput);
+    const promise = sut.execute(usecaseInput);
 
     await expect(promise).rejects.toThrow("Error in hash method");
   });
@@ -47,7 +47,7 @@ describe("CreateUserUseCase Test Suite", () => {
   it("should be call CreateUserRepository with correct values", async () => {
     const saveSpy = vi.spyOn(createUserRepository, "save");
 
-    await sut.perform(usecaseInput);
+    await sut.execute(usecaseInput);
 
     expect(saveSpy).toHaveBeenCalledWith({
       id: userId,
@@ -60,13 +60,13 @@ describe("CreateUserUseCase Test Suite", () => {
 
   it("should be throw if CreateUserRepository throws", async () => {
     vi.spyOn(createUserRepository, "save").mockRejectedValueOnce(new Error("Error in save method"));
-    const promise = sut.perform(usecaseInput);
+    const promise = sut.execute(usecaseInput);
 
     await expect(promise).rejects.toThrow("Error in save method");
   });
 
   it("should be save an user and return a public user", async () => {
-    const result = await sut.perform(usecaseInput);
+    const result = await sut.execute(usecaseInput);
 
     expect(result).toEqual({
       id: userId,
