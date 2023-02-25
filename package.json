@@ -1,6 +1,6 @@
 {
   "name": "node-template",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Template for NodeJS applications with TypeScript, unit testing and following good programming practices",
   "repository": "git@github.com:apollumtechnology/node-template.git",
   "author": "Bruno Petrolini <brunopetrolini@hotmail.com>",
